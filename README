@@ -1,0 +1,16 @@
+#Prep the system, energy minimization, equilibration
+01-prep_equilibrium_MD.sh 
+
+#Run 10ns trajectory
+02-GPU_equil_300K.sh
+ 
+#generate average modes from by splitting trajectory into 10 segmments
+#then taking average cross-correlation matrix over all 10 segments
+#and then diagonalizing the average matrix
+03_generate_evals.sh 
+
+#we project velocities from our MD trajectory genearted in 02 onto selected eigenvectors from 03
+04_project_traj_onto_modes.sh 
+
+#and then we fourier transform it and compute the VDOS along this one eigenvector/mode/DOF
+05_calc_1D_vdos.sh
