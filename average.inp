@@ -1,0 +1,15 @@
+#nFiles
+10
+#fnList
+covar_fres_coars_test_0.out.mmat
+covar_fres_coars_test_1.out.mmat
+covar_fres_coars_test_2.out.mmat
+covar_fres_coars_test_3.out.mmat
+covar_fres_coars_test_4.out.mmat
+covar_fres_coars_test_5.out.mmat
+covar_fres_coars_test_6.out.mmat
+covar_fres_coars_test_7.out.mmat
+covar_fres_coars_test_8.out.mmat
+covar_fres_coars_test_9.out.mmat
+#fnOut
+ave_output.mmat
