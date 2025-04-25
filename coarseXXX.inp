@@ -1,0 +1,32 @@
+#fnTop (custom .mtop file)
+protein.mtop
+#fnCrd (CP2K position and velocity files)
+traj_pbc_XXX.trr
+#fnJob (Job file defining atom groups)
+static.job
+#nRead (Number of frames in the file)
+125000
+#analysisInterval (Analysis should be performed every X frames)
+1
+#fnRef (Reference coordinate file)
+../protein_ref.gro
+#alignGrp
+0
+#analyzeGrp
+0
+#wrap
+0
+#nCorr (correlation time in trajecotry steps)
+500
+#winSigma (wavenumbers cm^-1)
+10.0
+#binaryMatrix
+1
+#doGenModes
+0
+#convergence (only for generalized normal modes)
+1.0e-5
+#maxIter (only for generalized normal modes)
+100
+#fnOut (Output file appender)
+fres_coars_test_XXX.out
