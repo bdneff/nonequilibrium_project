@@ -30,9 +30,9 @@ Workflow
 
   (These scripts operate on output directories based on system_type)
 
-    03_generate_evals.sh            # Split trajectory into 10 segments, compute
+    03_generate_evals.sh            # Split trajectory into 10 segments, compute cross-correlation matrix for each segment
 
-    04_average.sh                   # (Optional) Performs the averaging step and then eigen-decomposition
+    04_average.sh                   # (Optional) Performs the averaging step between 10 matrcies and then eigen-decomposition of average matrix
 
     05_project_traj_onto_modes.sh   # Projects velocity data onto selected eigenmodes
 
