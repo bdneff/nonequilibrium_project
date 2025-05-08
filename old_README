@@ -1,0 +1,44 @@
+#instructions for each script are contained within each script
+#some scripts, like 04_project_traj_onto_modes.sh, require specification in the first few lines for which frequencies want to be analyzed
+#here, we just look at the first 1000 modes for the first 5 frequencies, but this can be easily changed
+
+#this will generate data for the equilibrium system
+
+#Prep the system, energy minimization, equilibration
+01-prep_equilibrium_MD.sh 
+
+#To prep non-equil system
+02-GPU_non_equil_300K.sh
+
+#Run 10ns trajectory
+02-GPU_equil_300K.sh
+
+#To run 10ns trajectory for nonequil
+02-GPU_non_equil_300K.sh
+ 
+
+
+#THE FINAL 4 scripts (03, 04, 05, 06) all have a flag in the first few lines: system_type
+#system_type is set to 0 for EQUILIBRIUM
+#these scripts will be performed on the run-NPT_equil_300K folder
+
+#system_type is set to 1 for NONEQUILIBRIUM 
+#these scripts will be performed on the run-NPT_nonequil_300K folder
+
+#generate average modes from by splitting trajectory into 10 segmments
+#then taking average cross-correlation matrix over all 10 segments
+#and then diagonalizing the average matrix
+03_generate_evals.sh 
+
+#separate the averaging component of the previous script
+04_average.sh
+
+#we project velocities from our MD trajectory genearted in 02 onto selected eigenvectors from 03
+05_project_traj_onto_modes.sh 
+
+#and then we fourier transform it and compute the VDOS along this one eigenvector/mode/DOF
+06_calc_1D_vdos.shi
+
+#the 1D VDOS data output for this protocol will be directed to 
+1D_vdos/output/
+

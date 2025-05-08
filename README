@@ -1,16 +1,48 @@
-#Prep the system, energy minimization, equilibration
-01-prep_equilibrium_MD.sh 
+Vibrational Analysis Workflow
+=============================
 
-#Run 10ns trajectory
-02-GPU_equil_300K.sh
- 
-#generate average modes from by splitting trajectory into 10 segmments
-#then taking average cross-correlation matrix over all 10 segments
-#and then diagonalizing the average matrix
-03_generate_evals.sh 
+General Notes
+-------------
+- Each script is self-contained with usage instructions in the header comments.
+- Scripts 03_generate_evals.sh through 06_calc_1D_vdos.sh require a 'system_type' flag
+  to be set manually at the top of the script:
+    - system_type=0 → Equilibrium system (run-NPT_equil_300K/)
+    - system_type=1 → Non-equilibrium system (run-NPT_non_equil_300K/)
 
-#we project velocities from our MD trajectory genearted in 02 onto selected eigenvectors from 03
-04_project_traj_onto_modes.sh 
+- In 05_project_traj_onto_modes.sh, you must specify which modes or frequencies to analyze.
+  - Default: first 1000 modes for the first 5 frequencies.
+  - You can modify this directly in the script.
 
-#and then we fourier transform it and compute the VDOS along this one eigenvector/mode/DOF
-05_calc_1D_vdos.sh
+Workflow
+--------
+
+1. System Setup and Trajectory Generation
+
+  Equilibrium System:
+    01-prep_equilibrium_MD.sh       # Energy minimization + equilibration
+    02-GPU_equil_300K.sh            # Run 10 ns equilibrium trajectory
+
+  Non-Equilibrium System:
+    01-prep_nonequil_MD.sh          # Prep system with initial equilibrium snapshot
+    02-GPU_non_equil_300K.sh        # Run 10 ns non-equilibrium trajectory
+
+2. Post-Simulation Analysis
+
+  (These scripts operate on output directories based on system_type)
+
+    03_generate_evals.sh            # Split trajectory into 10 segments, compute
+
+    04_average.sh                   # (Optional) Performs the averaging step and then eigen-decomposition
+
+    05_project_traj_onto_modes.sh   # Projects velocity data onto selected eigenmodes
+
+    06_calc_1D_vdos.sh              # Computes 1D Vibrational Density of States (VDOS)
+                                    # via Fourier transform
+
+Output
+------
+- The final 1D VDOS data is written to:
+    run-NPT_equil_300K/1D_vdos/output/
+    OR
+    run-NPT_non_equil_300K/1D_vdos/output/
+
