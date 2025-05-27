@@ -20,9 +20,9 @@ mkdir output
 
 #specify the range of frequencies from which we will extract eigenvectors to project velocities onto
 #frequency index
-start_freq=1
+start_freq=11
 step=1
-end_freq=5
+end_freq=12
 
 # Loop over every 10th frequency
 for ((freq=$start_freq; freq<=$end_freq; freq+=$step)); do
@@ -65,7 +65,7 @@ EOL
 #wrap
 0
 #fnEigVec
-../../$run_dir/evec_ave_output.mmat
+../../run-NPT_equil_300K/evec_ave_output.mmat
 #freqSel
 ${freq}
 #modeStart

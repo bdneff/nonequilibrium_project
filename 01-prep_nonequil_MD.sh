@@ -2,7 +2,7 @@
 #SBATCH -p general
 #SBATCH -N 1
 #SBATCH -c 16
-#SBATCH -t 0-01:00
+#SBATCH -t 0-02:00
 
 # Generate topology (amber force field)
 gmx=gmx_plumed

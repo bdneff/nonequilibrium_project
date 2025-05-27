@@ -6,7 +6,7 @@
 #SBATCH -o test_covar.out
 
 # Manually set system type: 0 = equilibrium, 1 = non-equilibrium
-system_type=0
+system_type=1
 
 if [ "$system_type" -eq 0 ]; then
     run_dir="run-NPT_equil_300K"
@@ -20,6 +20,9 @@ fi
 #take the average between the 10 sets of cross-correlation matrices
 #next step depends on previous step being done
 cd $run_dir/
+
+#throw in line to generate VDOS here since we use for comparison
+sbatch ../templates/dos.sh
 
 /scratch/mheyden1/MadR2014/gen-modes/avgBinMatrixList.exe ../templates/average.inp
 

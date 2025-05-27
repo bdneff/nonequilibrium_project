@@ -5,7 +5,7 @@
 #SBATCH -t 0-02:00
 
 # Manually set system type: 0 = equilibrium, 1 = non-equilibrium
-system_type=0
+system_type=1
 
 if [ "$system_type" -eq 0 ]; then
     run_dir="run-NPT_equil_300K"

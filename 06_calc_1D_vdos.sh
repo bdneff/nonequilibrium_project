@@ -14,7 +14,7 @@ fi
 
 #direct the output here
 
-mv /scratch/bdneff/non-equil_project/DEPDIST/sample_setup_NEQ/$run_dir/project_traj/proj*freq*.dat /scratch/bdneff/non-equil_project/DEPDIST/sample_setup_NEQ/$run_dir/project_traj/output
+mv /scratch/bdneff/non-equil_project/DEPDIST/sample_setup_NEQ/$run_dir/project_traj/proj*freq*.dat /scratch/bdneff/non-equil_project/DEPDIST/sample_setup_NEQ/$run_dir/project_traj/output/
 
 mkdir $run_dir/1D_vdos
 
@@ -27,9 +27,9 @@ cd ..
 cd ..
 
 # Frequency range and step
-start_freq=1
+start_freq=23
 step=1
-end_freq=5
+end_freq=23
 
 # Parameters for the 2nd step
 n_read=2500000
