@@ -20,9 +20,9 @@ mkdir output
 
 #specify the range of frequencies from which we will extract eigenvectors to project velocities onto
 #frequency index
-start_freq=11
+start_freq=1
 step=1
-end_freq=12
+end_freq=5
 
 # Loop over every 10th frequency
 for ((freq=$start_freq; freq<=$end_freq; freq+=$step)); do
