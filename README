@@ -13,6 +13,8 @@ General Notes
   - Default: first 1000 modes for the first 5 frequencies.
   - You can modify this directly in the script.
 
+Figures subdirectory contains separate README for information regarding the generation of figures used for this manuscript
+
 Workflow
 --------
 
