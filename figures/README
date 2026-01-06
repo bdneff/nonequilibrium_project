@@ -1,0 +1,13 @@
+Each subdirectory contains a jupyter notebook file, plot.ipynb, which accesses the data store in the data subdirectory and generates one of the plots in the manuscript
+all data used to generate figures is contained in the data directory 
+
+github with information on how data is generated
+https://github.com/HeydenLabASU-collab/nonequilibrium_project
+
+equilibrium system trajectory
+/mesa1/bdneff/sample_setup_NEQ/run-NPT_equil_300K/traj_pbc.trr
+
+non_equilibrium system trajectory
+/mesa1/bdneff/sample_setup_NEQ/run-NPT_non_equil/equil_300K/traj_pbc.trr
+
+
